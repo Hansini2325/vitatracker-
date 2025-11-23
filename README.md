@@ -173,7 +173,8 @@ Export data to PDF/CSV for doctor visits.
 Drug interaction warnings.
 ________________________________________
 => Screenshots
-![VitaTracker Screenshot](screenshots/Screenshot%202025-11-23%20160751.png)
+<img width="1916" height="991" alt="Dashboard" src="https://github.com/user-attachments/assets/d92c93f0-5125-44e4-b9b6-83e2b95d8472" />
+
 ________________________________________
 
 Author : Burra Hansini 
