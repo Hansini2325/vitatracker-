@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Schedule Reminder | VitaTracker{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Create New Schedule</h1>
+</div>
+
+<div class="form-wrapper">
+    {# Check if we actually have inventory before letting them schedule #}
+    {% if vitamins %}
+    
+    <form method="POST" action="{{ url_for('schedule.add_schedule') }}" class="form-card">
+        
+        <div class="control-group">
+            <label for="vitamin_id" class="label-bold">Supplement / Vitamin <span class="req-marker">*</span></label>
+            <select id="vitamin_id" name="vitamin_id" class="form-control" required>
+                <option value="" disabled selected>-- Select Target --</option>
+                {% for v in vitamins %}
+                    <option value="{{ v.vitamin_id }}">
+                        {{ v.name }} {% if v.dose %}- {{ v.dose }}{% endif %}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="control-group">
+            <label for="time_of_day" class="label-bold">Alert Time <span class="req-marker">*</span></label>
+            <input type="time" id="time_of_day" name="time_of_day" class="form-control" required>
+        </div>
+
+        <div class="control-group">
+            <label class="label-bold">Frequency (Days)</label>
+            
+            {# Defining days list here to keep the HTML clean #}
+            {% set week_days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] %}
+            
+            <div class="days-grid">
+                {% for day in week_days %}
+                <div class="day-check-item">
+                    <input type="checkbox" id="day_{{ loop.index }}" name="days_of_week" value="{{ day }}">
+                    <label for="day_{{ loop.index }}">{{ day }}</label>
+                </div>
+                {% endfor %}
+            </div>
+            <p class="help-text text-muted">* If no days are selected, this defaults to a <strong>Daily</strong> schedule.</p>
+        </div>
+
+        <div class="button-row">
+            <button type="submit" class="btn btn-save">Save Schedule</button>
+            <a href="{{ url_for('schedule.list_schedules') }}" class="btn btn-ghost">Cancel</a>
+        </div>
+    </form>
+
+    {% else %}
+    
+    <div class="empty-state-card">
+        <div class="icon-placeholder">💊</div>
+        <h3>Inventory Empty</h3>
+        <p>You can't schedule what you haven't added yet.</p>
+        <a href="{{ url_for('vitamins.add_vitamin') }}" class="btn btn-action">Add Your First Vitamin</a>
+    </div>
+    
+    {% endif %}
+</div>
+{% endblock %}
