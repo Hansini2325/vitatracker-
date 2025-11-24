@@ -51,8 +51,8 @@ ________________________________________
 code Text
 downloadcontent_copy
 expand_less
----text
-    VitaTracker/
+```text
+VitaTracker/
 │
 ├── app.py                 # Main application entry point
 ├── config.py              # Configuration variables
@@ -76,7 +76,7 @@ expand_less
 └── static/
     └── css/
         └── style.css     # Custom styling
-  ---
+```
 ________________________________________
 =>Installation & Setup
 Follow these steps to get the project running on your local machine.
