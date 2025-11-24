@@ -82,6 +82,7 @@ VitaTracker/
         └── style.css     # Custom styling
 ```
 ________________________________________
+
 🧪 Usage & Testing Guide
 To test the full functionality of the application, follow this flow:
 1. Authentication
