@@ -174,10 +174,10 @@ Export data to PDF/CSV for doctor visits.
 Drug interaction warnings.
 ________________________________________
 => Screenshots
-<img width="1916" height="991" alt="Dashboard" src="https://github.com/user-attachments/assets/d92c93f0-5125-44e4-b9b6-83e2b95d8472" />
-<img width="1919" height="989" alt="Screenshot 2025-11-23 161002" src="https://github.com/user-attachments/assets/f49edb2c-9cb7-46d6-b21e-c1fc6f0193bc" />
-<img width="1918" height="1086" alt="Screenshot 2025-11-24 172832" src="https://github.com/user-attachments/assets/c72463dd-ce88-4392-99fc-3c1b21e421a9" />
 
+<img width="1918" height="1086" alt="Screenshot 2025-11-24 172832" src="https://github.com/user-attachments/assets/c72463dd-ce88-4392-99fc-3c1b21e421a9" />
+<img width="1919" height="989" alt="Screenshot 2025-11-23 161002" src="https://github.com/user-attachments/assets/f49edb2c-9cb7-46d6-b21e-c1fc6f0193bc" />
+<img width="1916" height="991" alt="Dashboard" src="https://github.com/user-attachments/assets/d92c93f0-5125-44e4-b9b6-83e2b95d8472" />
 ________________________________________
 
 Author : Burra Hansini 
