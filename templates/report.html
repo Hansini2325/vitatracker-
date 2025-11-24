@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Report - VitaTracker{% endblock %}
+{% block content %}
+<div class="page-header">
+    <h1>Adherence Report</h1>
+    <p class="page-subtitle">Track your vitamin intake progress</p>
+</div>
+<div class="stats-grid">
+    <div class="stat-card stat-success">
+        <div class="stat-icon">✓</div>
+        <div class="stat-content">
+            <h3>{{ stats.total_taken }}</h3>
+            <p>Total Taken</p>
+        </div>
+    </div>
+    <div class="stat-card stat-danger">
+        <div class="stat-icon">✗</div>
+        <div class="stat-content">
+            <h3>{{ stats.total_missed }}</h3>
+            <p>Total Missed</p>
+        </div>
+    </div>
+    <div class="stat-card stat-primary">
+        <div class="stat-icon">%</div>
+        <div class="stat-content">
+            <h3>{{ adherence }}%</h3>
+            <p>Adherence Rate</p>
+        </div>
+    </div>
+    <div class="stat-card stat-info">
+        <div class="stat-icon">#</div>
+        <div class="stat-content">
+            <h3>{{ stats.total_logs }}</h3>
+            <p>Total Logs</p>
+        </div>
+    </div>
+</div>
+{% if recent_logs %}
+<div class="report-section">
+    <h2>Last 30 Days Activity</h2>
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Taken</th>
+                    <th>Missed</th>
+                    <th>Daily Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for day in recent_logs %}
+                <tr>
+                    <td>{{ day.log_date.strftime('%b %d, %Y') if day.log_date else '-' }}</td>
+                    <td class="text-success">{{ day.taken_count }}</td>
+                    <td class="text-danger">{{ day.missed_count }}</td>
+                    <td>
+                        {% set total = day.taken_count + day.missed_count %}
+                        {% if total > 0 %}
+                        {{ ((day.taken_count / total) * 100) | round(1) }}%
+                        {% else %}
+                        0%
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+<div class="report-footer">
+    <p class="tip">
+        <strong>Tip:</strong> Maintain at least 80% adherence for optimal health benefits!
+    </p>
+</div>
+{% endblock %}

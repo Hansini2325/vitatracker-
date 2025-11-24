@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - VitaTracker{% endblock %}
+{% block content %}
+<div class="page-header">
+    <h1>Today's Vitamins</h1>
+    <p class="page-subtitle">{{ today.strftime('%A, %B %d, %Y') }}</p>
+</div>
+<div class="dashboard-container">
+    {% if vitamins %}
+        <div class="vitamin-grid">
+            {% for vitamin in vitamins %}
+            <div class="vitamin-card">
+                <div class="vitamin-header">
+                    <h3>{{ vitamin.name }}</h3>
+                    {% if vitamin.dose %}
+                    <span class="dose-badge">{{ vitamin.dose }}</span>
+                    {% endif %}
+                </div>
+                {% if vitamin.frequency %}
+                <p class="vitamin-frequency">{{ vitamin.frequency }}</p>
+                {% endif %}
+                <div class="vitamin-actions">
+                    {% if vitamin.vitamin_id in logged_vitamins %}
+                        {% if logged_vitamins[vitamin.vitamin_id] == 'taken' %}
+                        <form method="POST" action="{{ url_for('logs.log_intake', vitamin_id=vitamin.vitamin_id, status='taken') }}" style="display: inline;">
+                            <button type="submit" class="btn btn-success btn-small" disabled>✓ Taken</button>
+                        </form>
+                        <form method="POST" action="{{ url_for('logs.log_intake', vitamin_id=vitamin.vitamin_id, status='missed') }}" style="display: inline;">
+                            <button type="submit" class="btn btn-outline btn-small">Mark Missed</button>
+                        </form>
+                        {% else %}
+                        <form method="POST" action="{{ url_for('logs.log_intake', vitamin_id=vitamin.vitamin_id, status='taken') }}" style="display: inline;">
+                            <button type="submit" class="btn btn-outline btn-small">Mark Taken</button>
+                        </form>
+                        <form method="POST" action="{{ url_for('logs.log_intake', vitamin_id=vitamin.vitamin_id, status='missed') }}" style="display: inline;">
+                            <button type="submit" class="btn btn-danger btn-small" disabled>✗ Missed</button>
+                        </form>
+                        {% endif %}
+                    {% else %}
+                    <form method="POST" action="{{ url_for('logs.log_intake', vitamin_id=vitamin.vitamin_id, status='taken') }}" style="display: inline;">
+                        <button type="submit" class="btn btn-success btn-small">Mark Taken</button>
+                    </form>
+                    <form method="POST" action="{{ url_for('logs.log_intake', vitamin_id=vitamin.vitamin_id, status='missed') }}" style="display: inline;">
+                        <button type="submit" class="btn btn-danger btn-small">Mark Missed</button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+    <div class="empty-state">
+        <h2>No vitamins scheduled for today</h2>
+        <p>Start by adding vitamins to your list</p>
+        <a href="{{ url_for('vitamins.add_vitamin') }}" class="btn btn-primary">Add Vitamin</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

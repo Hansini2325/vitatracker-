@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}History - VitaTracker{% endblock %}
+{% block content %}
+<div class="page-header">
+    <h1>Intake History</h1>
+</div>
+<div class="filter-container">
+    <form method="GET" action="{{ url_for('logs.history') }}" class="filter-form">
+        <label for="date">Filter by Date:</label>
+        <input type="date" id="date" name="date" value="{{ filter_date }}">
+        <button type="submit" class="btn btn-small btn-primary">Filter</button>
+        {% if filter_date %}
+        <a href="{{ url_for('logs.history') }}" class="btn btn-small btn-outline">Clear Filter</a>
+        {% endif %}
+    </form>
+</div>
+{% if logs %}
+<div class="table-container">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Date & Time</th>
+                <th>Vitamin</th>
+                <th>Dose</th>
+                <th>Status</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+            <tr>
+                <td>{{ log.taken_at.strftime('%b %d, %Y %I:%M %p') if log.taken_at else '-' }}</td>
+                <td><strong>{{ log.vitamin_name }}</strong></td>
+                <td>{{ log.dose or '-' }}</td>
+                <td>
+                    {% if log.status == 'taken' %}
+                    <span class="status-badge status-success">Taken</span>
+                    {% else %}
+                    <span class="status-badge status-danger">Missed</span>
+                    {% endif %}
+                </td>
+                <td>{{ log.note or '-' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="empty-state">
+    <h2>No intake logs found</h2>
+    {% if filter_date %}
+    <p>No logs for {{ filter_date }}</p>
+    <a href="{{ url_for('logs.history') }}" class="btn btn-outline">View All Logs</a>
+    {% else %}
+    <p>Start logging your vitamin intake from the dashboard</p>
+    <a href="{{ url_for('logs.dashboard') }}" class="btn btn-primary">Go to Dashboard</a>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}

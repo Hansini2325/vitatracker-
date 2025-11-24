@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Profile - VitaTracker{% endblock %}
+{% block content %}
+<div class="page-header">
+    <h1>My Profile</h1>
+</div>
+<div class="profile-container">
+    <div class="profile-card">
+        <div class="profile-header">
+            <div class="profile-avatar">{{ user.username[0].upper() }}</div>
+            <div class="profile-info">
+                <h2>{{ user.username }}</h2>
+                <p>{{ user.email }}</p>
+            </div>
+        </div>
+        <div class="profile-stats">
+            <div class="profile-stat">
+                <span class="stat-label">Member Since</span>
+                <span class="stat-value">{{ user.created_at.strftime('%B %Y') if user.created_at else 'Unknown' }}</span>
+            </div>
+            <div class="profile-stat">
+                <span class="stat-label">Vitamins Tracked</span>
+                <span class="stat-value">{{ vitamin_count }}</span>
+            </div>
+            <div class="profile-stat">
+                <span class="stat-label">Total Logs</span>
+                <span class="stat-value">{{ log_count }}</span>
+            </div>
+        </div>
+        <div class="profile-actions">
+            <a href="{{ url_for('logs.dashboard') }}" class="btn btn-primary">Back to Dashboard</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

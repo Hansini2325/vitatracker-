@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Schedule - VitaTracker{% endblock %}
+{% block content %}
+<div class="page-header">
+    <h1>Vitamin Schedule</h1>
+    <a href="{{ url_for('schedule.add_schedule') }}" class="btn btn-primary">Add Schedule</a>
+</div>
+{% if schedules %}
+<div class="table-container">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Vitamin</th>
+                <th>Dose</th>
+                <th>Time</th>
+                <th>Days</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for schedule in schedules %}
+            <tr>
+                <td><strong>{{ schedule.vitamin_name }}</strong></td>
+                <td>{{ schedule.dose or '-' }}</td>
+                <td>{{ schedule.time_of_day.strftime('%I:%M %p') if schedule.time_of_day else '-' }}</td>
+                <td>{{ schedule.days_of_week or 'Daily' }}</td>
+                <td class="action-buttons">
+                    <form method="POST" action="{{ url_for('schedule.delete_schedule', schedule_id=schedule.schedule_id) }}" style="display: inline;">
+                        <button type="submit" class="btn btn-small btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="empty-state">
+    <h2>No schedules created yet</h2>
+    <p>Create a schedule to set reminders for your vitamins</p>
+    <a href="{{ url_for('schedule.add_schedule') }}" class="btn btn-primary">Create Your First Schedule</a>
+</div>
+{% endif %}
+{% endblock %}
