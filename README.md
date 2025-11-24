@@ -85,11 +85,11 @@ ________________________________________
 
 
 ````markdown
-## Steps to Install & Run
+Steps to Install & Run
 
 Here is how to get a local copy of the project up and running on your machine.
 
-### 1. Clone the Repository
+### 1\. Clone the Repository
 First, grab the code from GitHub:
 ```bash
 git clone [https://github.com/Hansini2325/vitatracker](https://github.com/Hansini2325/vitatracker)
@@ -158,7 +158,6 @@ python app.py
 
 Open your browser and go to `http://localhost:5000` to see it in action\!
 
-```
 ```
 🧪 Usage & Testing Guide
 To test the full functionality of the application, follow this flow:
