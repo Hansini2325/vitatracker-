@@ -4,6 +4,7 @@
 VitaTracker – Vitamin Intake Tracking System
 VitaTracker is a comprehensive web application designed to help users track their daily vitamin intake, manage medication schedules, and monitor adherence to their health regimens. By providing real-time tracking and detailed history reports, VitaTracker ensures you never miss a dose.
 ________________________________________
+```text
 📋 Table of Contents
 •	Overview
 •	Features
@@ -15,7 +16,9 @@ ________________________________________
 •	Database Schema
 •	Future Enhancements
 •	Screenshots
+```
 ________________________________________
+```text
 🌟 Features
 => User Authentication
 •	Secure registration and login system.
@@ -38,7 +41,8 @@ ________________________________________
 •	History Log: Filterable list of all past intakes.
 •	Analytics: Statistics on adherence percentage, total taken, and total missed.
 •	30-Day Breakdown: Visual insight into recent activity.
-________________________________________
+```
+_______________________________________
 => Technology Stack
 Component	Technology
 Backend	Python 3, Flask
