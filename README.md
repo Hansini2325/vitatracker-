@@ -82,69 +82,76 @@ VitaTracker/
         └── style.css     # Custom styling
 ```
 ________________________________________
-=>Installation & Setup
+Installation & Setup
 Follow these steps to get the project running on your local machine.
-Prerequisites
-•	Python 3.8 or higher
-•	MySQL Server 8.0 or higher
-•	pip (Python package installer)
-Step 1: Clone the Repository
-code Bash
-downloadcontent_copy
-expand_less
-    git  clone https://github.com/Hansini2325/vitatracker-
-cd VitaTracker
-  
-Step 2: Install Dependencies
-It is recommended to use a virtual environment.
-code Bash
-downloadcontent_copy
-expand_less
-    # Create virtual environment (Optional but recommended)
-python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
 
-# Install requirements
+Prerequisites:
+
+Python 3.8 or higher
+
+MySQL Server 8.0+
+
+pip
+
+1. Clone the Repository
+Bash
+
+git clone [https://github.com/Hansini2325/vitatracker](https://github.com/Hansini2325/vitatracker)
+cd VitaTracker
+2. Set up the Environment
+It's best to run this in a virtual environment to keep dependencies clean.
+
+Bash
+
+# Create virtual environment
+python -m venv venv
+
+# Activate it
+# On Windows:
+venv\Scripts\activate
+# On Mac/Linux:
+source venv/bin/activate
+3. Install Dependencies
+Bash
+
 pip install -r requirements.txt
-  
-Step 3: Database Setup
-1.	Start your MySQL Server.
-2.	Run the schema script to create the database and tables.
-code Bash
-downloadcontent_copy
-expand_less
-    # Run this in your terminal
+4. Database Setup
+Make sure your MySQL server is running. You need to run the schema script to create the database and necessary tables.
+
+Bash
+
+# Run this in your terminal (enter password when prompted)
 mysql -u root -p < schema.sql
-  
-Step 4: Configuration
-Edit the config.py file or set the following environment variables in your terminal to match your local database credentials:
+⚙️ Configuration
+You need to tell the app how to connect to your local database. You can either edit config.py directly or set environment variables.
+
+Option A: Set Environment Variables (Recommended)
+
 Windows (PowerShell):
-code Powershell
-downloadcontent_copy
-expand_less
-    $env:MYSQL_HOST="localhost"
+
+PowerShell
+
+$env:MYSQL_HOST="localhost"
 $env:MYSQL_USER="root"
 $env:MYSQL_PASSWORD="your_password"
 $env:MYSQL_DB="vitatracker"
 $env:SECRET_KEY="your-super-secret-key"
-  
 Mac/Linux:
-code Bash
-downloadcontent_copy
-expand_less
-    export MYSQL_HOST=localhost
+
+Bash
+
+export MYSQL_HOST=localhost
 export MYSQL_USER=root
 export MYSQL_PASSWORD=your_password
 export MYSQL_DB=vitatracker
 export SECRET_KEY=your-super-secret-key
-  
-Step 5: Run the Application
-code Bash
-downloadcontent_copy
-expand_less
-    python app.py
-  
-Open your browser and navigate to: http://localhost:5000
+Option B: Edit config.py Open config.py and manually replace the values with your database credentials.
+
+Run the App
+Bash
+
+python app.py
+Open your browser and go to: http://localhost:5000
 ________________________________________
 => Usage & Testing Guide
 To test the full functionality of the application, follow this flow:
