@@ -87,7 +87,7 @@ Step 1: Clone the Repository
 code Bash
 downloadcontent_copy
 expand_less
-    git clone https://github.com/Hansini2325/VitaTracker.git
+    git clone Hansini2325/vitatracker- 
 cd VitaTracker
   
 Step 2: Install Dependencies
