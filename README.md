@@ -83,6 +83,83 @@ VitaTracker/
 ```
 ________________________________________
 
+
+````markdown
+## Steps to Install & Run
+
+Here is how to get a local copy of the project up and running on your machine.
+
+### 1. Clone the Repository
+First, grab the code from GitHub:
+```bash
+git clone [https://github.com/Hansini2325/vitatracker](https://github.com/Hansini2325/vitatracker)
+cd VitaTracker
+````
+
+### 2\. Set up a Virtual Environment
+
+It's best practice to run this in a virtual environment to keep your project dependencies isolated.
+
+```bash
+# Create the environment
+python -m venv venv
+
+# Activate it
+# On Windows:
+venv\Scripts\activate
+# On Mac/Linux:
+source venv/bin/activate
+```
+
+### 3\. Install Dependencies
+
+Once the environment is active, install the required packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4\. Database Setup
+
+Make sure your MySQL Server is running. Then, run the included schema script to set up the database structure.
+
+```bash
+# Run this in your terminal (enter your MySQL password when prompted)
+mysql -u root -p < schema.sql
+```
+
+### 5\. Configure & Run
+
+You need to tell the app how to connect to your database. Run these commands in your terminal to set your credentials, then start the app.
+
+**For Windows (PowerShell):**
+
+```powershell
+$env:MYSQL_HOST="localhost"
+$env:MYSQL_USER="root"
+$env:MYSQL_PASSWORD="your_password"
+$env:MYSQL_DB="vitatracker"
+$env:SECRET_KEY="your-secret-key"
+
+python app.py
+```
+
+**For Mac/Linux:**
+
+```bash
+export MYSQL_HOST=localhost
+export MYSQL_USER=root
+export MYSQL_PASSWORD=your_password
+export MYSQL_DB=vitatracker
+export SECRET_KEY=your-secret-key
+
+python app.py
+```
+
+Open your browser and go to `http://localhost:5000` to see it in action\!
+
+```
+```
 🧪 Usage & Testing Guide
 To test the full functionality of the application, follow this flow:
 1. Authentication
