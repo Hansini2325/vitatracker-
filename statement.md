@@ -1,10 +1,13 @@
-Statement.md 
+Statement.md
+```text  
 Context : 
 ● Problem statement 
 ● Scope of the project 
 ● Target users 
 ● High-level features
-________________________________________
+```
+_______________________________________
+```text  
 Project Statement: VitaTracker
 1. Problem Statement
 In today's fast-paced world, maintaining a consistent health regimen is increasingly difficult. Many individuals struggle to keep track of their daily vitamin and medication intakes due to busy schedules, complex dosage requirements, and memory lapses.
@@ -39,4 +42,4 @@ Analytics & Reporting
 •	Intake History: A searchable log of all past user actions.
 •	Adherence Statistics: Automated calculation of success rates (percentage of taken vs. missed doses).
 •	Activity Summary: A summary view of the last 30 days to identify patterns in behavior.
-
+```
