@@ -82,24 +82,37 @@ VitaTracker/
         └── style.css     # Custom styling
 ```
 ________________________________________
-Installation & Setup
-Follow these steps to get the project running on your local machine.
+# VitaTracker 💊
 
-Prerequisites:
+## Overview of the Project
+VitaTracker is a web-based application designed to help users stay consistent with their health regimen. I built this project to solve the common problem of forgetting daily supplements or medication doses. 
 
-Python 3.8 or higher
+The application allows users to maintain a digital inventory of their vitamins, set up custom schedules for specific days and times, and track their adherence in real-time. It provides a simple dashboard to mark doses as "Taken" or "Missed" and generates history reports to visualize health habits over time.
 
-MySQL Server 8.0+
+## Features
+* **User Authentication:** Secure registration and login functionality to keep health data private.
+* **Vitamin Inventory:** Users can add, edit, and remove supplements (including details like dosage and frequency).
+* **Smart Scheduling:** Create custom schedules (e.g., "Daily at 8:00 AM") for each specific vitamin.
+* **Daily Dashboard:** A clean, real-time view of "Today's Tasks" where users can quick-log their intake.
+* **History & Analytics:** A log of all past activity and visual statistics showing adherence rates (Taken vs. Missed).
+* **Mobile Responsive:** The UI is designed to be accessible on both desktop and mobile browsers.
 
-pip
+## Technologies/Tools Used
+* **Backend:** Python 3, Flask
+* **Database:** MySQL (8.0+)
+* **Frontend:** HTML5, CSS3, Jinja2 Templates
+* **Security:** Werkzeug (for password hashing)
 
-1. Clone the Repository
-Bash
+## Steps to Install & Run the Project
 
-git clone [https://github.com/Hansini2325/vitatracker](https://github.com/Hansini2325/vitatracker)
+Follow these steps to get a local copy up and running.
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Hansini2325/vitatracker
 cd VitaTracker
 2. Set up the Environment
-It's best to run this in a virtual environment to keep dependencies clean.
+It is highly recommended to use a virtual environment to manage dependencies.
 
 Bash
 
@@ -116,18 +129,16 @@ Bash
 
 pip install -r requirements.txt
 4. Database Setup
-Make sure your MySQL server is running. You need to run the schema script to create the database and necessary tables.
+Ensure your MySQL Server is running. Then, run the schema script to create the database and tables.
 
 Bash
 
-# Run this in your terminal (enter password when prompted)
+# Run this in your terminal (you will be prompted for your MySQL password)
 mysql -u root -p < schema.sql
-⚙️ Configuration
-You need to tell the app how to connect to your local database. You can either edit config.py directly or set environment variables.
+5. Configuration
+You need to configure the database connection. You can do this by setting environment variables in your terminal before running the app.
 
-Option A: Set Environment Variables (Recommended)
-
-Windows (PowerShell):
+For Windows (PowerShell):
 
 PowerShell
 
@@ -135,8 +146,8 @@ $env:MYSQL_HOST="localhost"
 $env:MYSQL_USER="root"
 $env:MYSQL_PASSWORD="your_password"
 $env:MYSQL_DB="vitatracker"
-$env:SECRET_KEY="your-super-secret-key"
-Mac/Linux:
+$env:SECRET_KEY="your-secret-key"
+For Mac/Linux:
 
 Bash
 
@@ -144,14 +155,12 @@ export MYSQL_HOST=localhost
 export MYSQL_USER=root
 export MYSQL_PASSWORD=your_password
 export MYSQL_DB=vitatracker
-export SECRET_KEY=your-super-secret-key
-Option B: Edit config.py Open config.py and manually replace the values with your database credentials.
-
-Run the App
+export SECRET_KEY=your-secret-key
+6. Run the Application
 Bash
 
 python app.py
-Open your browser and go to: http://localhost:5000
+Open your browser and navigate to: http://localhost:5000
 ________________________________________
 => Usage & Testing Guide
 To test the full functionality of the application, follow this flow:
